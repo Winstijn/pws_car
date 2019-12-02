@@ -1,0 +1,16 @@
+{
+  "name": "pws_car",
+  "version": "1.0.0",
+  "description": "The code and libraries for the self-driving PWS car.",
+  "main": "start.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "Winstijn Smit",
+  "license": "ISC",
+  "dependencies": {
+    "prompt": "^1.0.0",
+    "raspi": "^6.0.1",
+    "raspi-pwm": "^6.0.0"
+  }
+}
