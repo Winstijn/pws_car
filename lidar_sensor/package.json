@@ -1,0 +1,9 @@
+{
+  "name": "lidar_sensor",
+  "version": "0.0.1",
+  "gypfile": true,
+  "dependencies": {
+    "nan": "*",
+    "streaming-worker-sdk": "*"
+  }
+}
