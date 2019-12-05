@@ -8,4 +8,4 @@
 
 const LidarSensor = require('./lidar.js')
 
-let sensor = new LidarSensor()
+let sensor = new LidarSensor( {debug: true } )
