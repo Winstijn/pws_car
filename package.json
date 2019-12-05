@@ -11,6 +11,8 @@
   "dependencies": {
     "prompt": "^1.0.0",
     "raspi": "^6.0.1",
-    "raspi-pwm": "^6.0.0"
+    "raspi-pwm": "^6.0.0",
+    "streaming-worker": "^1.0.1",
+    "streaming-worker-sdk": "^0.9.3"
   }
 }
