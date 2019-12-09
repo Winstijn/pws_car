@@ -17,6 +17,8 @@ class VehicleControls {
  
         // Limiter is in full decimals.
         this.powerLimit = settings.powerLimit || 100
+        this.currentSteer = 0.5 * Math.PI
+        this.currentAccel = 0
 
         // When the controls are ready for use.
         this.onReady = settings.onReady || (() => {})
@@ -49,11 +51,11 @@ class VehicleControls {
     // 0.5 volt is geen gas.
     // 0.33 volt is volledig achteruit.
     setAccelarator( power ){
-        
         // Maybe use map here?!
         const powerPercentage = this.powerLimit / 100 * power
         const voltage = 0.5 + powerPercentage * 0.16 // 0.66 - 0.5
         if (voltage > 0.66) { this.log('Too much voltage to DC motor!'); return }
+        this.currentAccel = power
         this.motorPWM.write(voltage / 3.3);
     }
 
@@ -61,8 +63,9 @@ class VehicleControls {
     // 0.5 volt is recht ( 1/2 PI )
     // 0.65 volt is maximum links ( PI )
     setSteer( angle ){
-        const steerVoltage = this.map(angle, 0, Math.PI, 0.35, 0.65)
-        if ( steerVoltage > 0.65 || steerVoltage < 0.35 ) { this.log('Wrong voltsge to steer motor!'); return }
+        const steerVoltage = this.map(angle, Math.PI / 12, -Math.PI / 12,  0.35, 0.65)
+        if ( steerVoltage > 0.65 || steerVoltage < 0.35 ) { this.log('Wrong voltage to steer motor!'); return }
+        this.currentSteer = angle
         this.steerPWM.write( steerVoltage / 3.3 )
     }
 

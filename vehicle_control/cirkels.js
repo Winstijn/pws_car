@@ -8,7 +8,7 @@
 
 const VehicleControls = require('./vehicle_controls.js')
 
-let controls = new VehicleControls( { powerLimit: 30, onReady: circles } )
+let controls = new VehicleControls( { powerLimit: 25, onReady: circles } )
 
 async function circles(){
     console.log('Driving circles!')
